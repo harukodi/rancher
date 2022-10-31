@@ -1,0 +1,15 @@
+## Create a folder for the compose file
+## mkdir -p rancher/conf
+
+version: '3'
+services:
+  app:
+    image: 'rancher/rancher:latest'
+    container_name: rancher
+    restart: unless-stopped
+    ports:
+      - '82:80'
+      - '1443:443'
+    privileged: true
+    volumes:
+      - ./conf:/var/lib/rancher
